@@ -1,0 +1,47 @@
+﻿<Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:zones="clr-namespace:LostTech.Stack.Zones;assembly=Stack"
+      zones:Layout.Version="2"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Width="1096"
+      Height="1888"
+      d:DesignWidth="1096"
+      d:DesignHeight="1888">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="639" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="2*" />
+    </Grid.RowDefinitions>
+    <zones:Zone x:Name="Full"
+                Grid.RowSpan="4" />
+    <zones:WindowTabs Grid.Row="0"
+                      ItemsSource="{Binding Windows, Source={x:Reference Top}}" />
+    <zones:WindowTabs Grid.Row="2"
+                      ItemsSource="{Binding Windows, Source={x:Reference Main}}" />
+    <zones:Zone x:Name="Top"
+                Grid.Row="1" />
+    <zones:Zone x:Name="Main"
+                Grid.Row="3" />
+    <Border Grid.Row="0"
+            Grid.RowSpan="4"
+            Height="160"
+            VerticalAlignment="Bottom"
+            Background="#44F"
+            zones:Layout.IsHint="True">
+        <!-- Find more symbols from Segoe UI Symbol in Character Map app -->
+        <TextBlock HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontFamily="Segoe UI Symbol"
+                   Foreground="White"
+                   Text="⇕"
+                   FontSize="80" />
+    </Border>
+    <zones:Zone Grid.Row="0"
+                Grid.RowSpan="4"
+                Height="160"
+                Target="{Binding ElementName=Full}"
+                VerticalAlignment="Bottom" />
+</Grid>
